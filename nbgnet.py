@@ -6,7 +6,6 @@ and deep learning techniques to capture cross-scale dynamics that can infer
 the neural data from multiple scales.
 """
 
-# Import required modules
 from __future__ import print_function
 from keras import Model, activations
 from keras.layers import Layer, Input, Concatenate, Dense
