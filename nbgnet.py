@@ -10,7 +10,6 @@ from __future__ import print_function
 from keras import Model, activations
 from keras.layers import Layer, Input, Concatenate, Dense
 from keras.layers.recurrent import RNN
-from keras.optimizers import Adam
 from keras import backend as K
 import itertools
 
