@@ -1,7 +1,7 @@
 NBGNet - NeuroBondGraph Network
 ====================================================
 
-This code implements the model from the paper "[Bi-directional Modeling Between Cross-Scale Neural Activity](https://www.biorxiv.org/content/10.1101/2020.11.30.404244v1)". It is a sparsely-connected recurrent neural network designed for investigating multi-scale neural data, but can be applied to any multi-scale time series data. The NBGNet is able to capture the dynamics and thus infer the neural activity from different scales. For example, in the paper, local field potentials and screw electrocorticography are brain activity recorded in different scales. The NBGNet is able to reconstruct the screw electrocorticography from local field potentials, and vice versa.   
+This code implements the model from the paper "[Bi-directional Modeling Between Cross-Scale Neural Activity](https://www.biorxiv.org/content/10.1101/2020.11.30.404244v1)". It is a sparsely-connected recurrent neural network designed for investigating multi-scale neural data, but can be applied to any multi-scale time series data. The NBGNet is able to capture the dynamics and thus infer the neural activity from different scales. For example, in the paper, local field potentials and screw electrocorticography are brain activity recorded in different scales. The NBGNet is able to reconstruct the screw electrocorticography from local field potentials, and vice versa. Furthermore, this work provides a simple framework to implement any dynamical equation with customized recurrent neural network layer.
 
 Prerequisites
 ----------------------------------------------------
@@ -12,8 +12,22 @@ The code is written in Python 3.7.4. You will also need:
 Getting started
 ----------------------------------------------------
 
-Before starting, you need
+Before starting, you need to build the dynamical systems based on the data types you are working with. Given different system dynamics equations you may need to modify the update function codes in the recurrent layers. The components, in other words, model sub-units, identified from the dynamical systems will be fed into the NBGNet as inputs when creating the model. Please refer to the reference for more details. 
 
+Training a NBGNet model
+----------------------------------------------------
+
+Now given we have the training datasets, we can train the models.
+
+Evaluating a trained model
+----------------------------------------------------
+
+Once your model is finished training, the next step is to evalute it.
+
+Contact
+----------------------------------------------------
+
+File any issues with the [issue tracker](https://github.com/DerekYJC/NBGNet/issues). For acy questions or problems, this code is maintained by [@DerekYJC](https://github.com/DerekYJC).
 
 ## Reference
 
