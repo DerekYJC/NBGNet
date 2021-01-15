@@ -12,6 +12,7 @@ from keras.layers import Layer, Input, Concatenate, Dense
 from keras.layers.recurrent import RNN
 from keras import backend as K
 import itertools
+import numpy as np
 
 class ForwardTransmission(Layer):
     """
@@ -466,3 +467,42 @@ def train_model(model, X_train, y_train, epochsPerTrial, nRounds, batchSize,
         model.save_weights(saveFileName)
     
     return history
+
+def evaluate_model(model, X_test, y_test, evaluationfunc,
+                saveResults=True, saveFileName=''):
+    """
+    Function to train the NBGNet model.
+    Args:
+        model: model to be trained
+        X_train: Dictionary, where single-trial input data is stored in corresponding trial as key
+        y_train: Dictionary, where single-trial output data is stored in corresponding trial as key
+        evaluationfunc: Function or lists of functions to evluate the model performance    
+        saveResults: Binary, whether save the results based on evaluation function or not    
+        saveFileName: String, path of the saved       
+        
+    Returns:
+        evaluation_results: model evaluation with specified metrics       
+    """
+    
+    y_pred = model.predict(X_test) 
+    
+    if callable(evaluationfunc):
+        evaluation_results = evaluationfunc(y_pred, y_test)
+    elif type(evaluationfunc) is list: 
+        evaluation_results = dict()
+        for i, func in enumerate(evaluationfunc):
+            evaluation_results[i] = func(y_pred, y_test)
+    
+    if saveResults:
+        np.save(saveFileName, evaluation_results)
+    
+    return evaluation_results
+
+# Example evaluation metrics: mse, cc
+def mean_squared_error_func(y_pred, y_test):
+    mse = np.mean(np.square(y_pred - y_test))
+    return mse
+
+def cross_correlation_func(y_pred, y_test):
+    cc = np.corrcoef(y_pred, y_test)[0, 1]
+    return cc
