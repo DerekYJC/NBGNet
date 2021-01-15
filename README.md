@@ -17,12 +17,20 @@ Before starting, you need to build the dynamical systems based on the data types
 Training a NBGNet model
 ----------------------------------------------------
 
-Now given we have the training datasets, we can train the models.
+Now given we have the training datasets, we can train the models. The dataset is a dictionary where the neural data are the values stored with the corresponding keys (which are the IDs of the trial). 
+```
+training_history = train_model(model, X_train, y_train)
+```
+- Check the function to customize the training protocol.
 
 Evaluating a trained model
 ----------------------------------------------------
 
 Once your model is finished training, the next step is to evalute it.
+```
+evaluation_results = evaluate_model(model, X_test, y_test, evaluation_functions)
+```
+`evaluation_functions` can be a function instance or a list of several function instances. For example, it can be either `mean_squared_error_func` or `[mean_squared_error_func, cross_correlation_func, ...]`. 
 
 Contact
 ----------------------------------------------------
