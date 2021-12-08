@@ -39,4 +39,4 @@ File any issues with the [issue tracker](https://github.com/DerekYJC/NBGNet/issu
 
 ## Reference
 
-- Y. J. Chang, Y. I. Chen, H. C. Yeh, J. M. Carmena, & S. R. Santacruz (2020). [Bi-directional Modeling Between Cross-Scale Neural Activity](https://www.biorxiv.org/content/10.1101/2020.11.30.404244v1), bioRxiv.
+- Y. J. Chang, Y. I. Chen, H. C. Yeh, J. M. Carmena, & S. R. Santacruz (2020). [Inferring system-level brain communication through multi-scale neural activity](https://www.biorxiv.org/content/10.1101/2020.11.30.404244v2), bioRxiv.
